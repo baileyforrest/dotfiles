@@ -1,0 +1,27 @@
+{
+  "predef": [
+    "console",
+    "__dirname",
+    "require",
+    "exports",
+    "module"
+  ],
+
+  // Enforcing options
+  "strict": true,
+  "curly": true,
+  "plusplus": true,
+  "quotmark": "single",
+  "undef": true,
+  "trailing": true,
+  "camelcase": true,
+
+  // Legacy Options
+  "white": true,
+  "onevar": true,
+
+  // Relaxing options
+  "laxcomma": true,
+
+  "indent": 2
+}

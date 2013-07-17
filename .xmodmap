@@ -1,0 +1,5 @@
+!
+! Turn Menu key into windows key
+!
+
+keycode 135 = Super_R
