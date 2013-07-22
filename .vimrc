@@ -13,7 +13,6 @@ Bundle 'majutsushi/tagbar'
 Bundle 'pangloss/vim-javascript'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'wavded/vim-stylus'
-Bundle 'othree/html5.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'Lokaltog/vim-powerline'
@@ -30,6 +29,8 @@ set autoindent
 set cindent
 set encoding=utf-8
 set laststatus=2 " Always enable status line
+set nobackup " No backup files
+set directory=~/.tmp/vim " Vim .swp file location
 
 " Line number config
 set relativenumber " Show line numbers from cursor
@@ -63,6 +64,11 @@ let g:ctrlp_working_path_mode = ''
 
 " Syntastic Options
 "let g:syntastic_check_on_open=1 "Check syntax of file open
+
+" html indent options
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 " JSLint options
 let g:syntastic_javascript_checkers = ['jshint']

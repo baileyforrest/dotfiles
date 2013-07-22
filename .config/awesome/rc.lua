@@ -268,7 +268,7 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/Pictures/screenshots/ 2>/dev/null'") end),
 
     --- Open browser window
-    awful.key({ "Mod4" }, "c", function () awful.util.spawn("chromium") end),
+    awful.key({ "Mod4" }, "c", function () awful.util.spawn("chromium --allow-file-access-from-files") end),
 
     --- mpd control
     awful.key({ "Mod4" }, "F4", function() awful.util.spawn("mpc toggle") end),
