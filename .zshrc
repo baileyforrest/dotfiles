@@ -8,6 +8,7 @@ bindkey -e
 ZDOTDIR=~/.zsh
 autoload -U select-word-style
 select-word-style bash
+stty -ixon
 
 # History
 HISTFILE=~/.histfile

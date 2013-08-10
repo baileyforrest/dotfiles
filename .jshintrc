@@ -11,7 +11,7 @@
   "strict": true,
   "curly": true,
   "plusplus": true,
-  "quotmark": "single",
+  "quotmark": true,
   "undef": true,
   "trailing": true,
   "camelcase": true,

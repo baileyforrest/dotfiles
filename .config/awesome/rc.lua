@@ -512,3 +512,9 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 --- Run autostart programs
 awful.util.spawn("pulseaudio --start")
+
+-- disable startup-notification globally, disables busy cursor for hotkeys
+local oldspawn = awful.util.spawn
+awful.util.spawn = function (s)
+    oldspawn(s, false)
+end

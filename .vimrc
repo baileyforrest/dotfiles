@@ -11,6 +11,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
 Bundle 'pangloss/vim-javascript'
+"Bundle 'jelera/vim-javascript-syntax'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'wavded/vim-stylus'
 Bundle 'scrooloose/syntastic'
@@ -41,6 +42,7 @@ set t_Co=256
 
 " Mark Trailing white spaces
 set listchars=trail:~
+set listchars=tab:>-
 set list
 highlight SpecialKey ctermfg=14 ctermbg=1
 
