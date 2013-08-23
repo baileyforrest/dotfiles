@@ -24,11 +24,12 @@ RPROMPT="[%{$fg[magenta]%}%T %{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 export BROWSER="chromium --allow-file-access-from-files"
 export EDITOR=vim
 
+# Aliases
 alias ls='ls --color=auto'
-
-alias usbmount="sudo mount -o gid=users,fmask=113,dmask=002"
-alias suvim="sudo vim"
+alias usbmount='sudo mount -o gid=users,fmask=113,dmask=002'
+alias suvim='sudo vim'
 alias ..='cd ..'
+alias detach='sudo udisks --detach'
 
 alias sshshark="ssh bcforres@shark.ics.cs.cmu.edu"
 alias sshandrew="ssh bcforres@unix.andrew.cmu.edu"
