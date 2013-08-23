@@ -37,24 +37,6 @@ alias sshYandrew="ssh -Y bcforres@unix.andrew.cmu.edu"
 alias sshece="ssh bcforres@ece000.ece.cmu.edu"
 alias sshYece="ssh -Y bcforres@ece000.ece.cmu.edu"
 
-#Window title
-#case $TERM in
-#    termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term)
-#        precmd () { print -Pn "\e]0;%n@%M %~ %#\a" }
-#        preexec () { print -Pn "\e]0;%n@%M %~ %# [$1]\a" }
-#        ;;
-#    screen|screen-256color)
-#        precmd () {
-#            print -Pn "\e]83;title \"$1\"\a"
-#            print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a"
-#        }
-#        preexec () {
-#            print -Pn "\e]83;title \"$1\"\a"
-#            print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a"
-#        }
-#        ;;
-#esac
-
 #colorized man pages
 man() {
     env \
@@ -68,3 +50,26 @@ man() {
         man "$@"
 }
 
+export MARKPATH=$HOME/.marks
+function jump { 
+    cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
+}
+
+function mark { 
+    mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
+}
+
+function unmark { 
+    rm -if $MARKPATH/$1 
+}
+
+function marks {
+    \ls -l $MARKPATH | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
+}
+
+function _marks {
+    reply=($(ls $MARKPATH))
+}
+
+compctl -K _marks jump
+compctl -K _marks unmark

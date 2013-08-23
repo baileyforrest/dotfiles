@@ -1,15 +1,12 @@
 Xcursor.theme: Vanilla-DMZ-AA
 URxvt.scrollBar: false
-!Urxvt.font: -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*,-misc-fixed-medium-r-normal--14-*-*-*-*-*-iso10646-1
-!URxvt*font: -*-Terminus-*-*-*-*-*-*-*-*-*-*-*-*
 URxvt*font: -*-Terminus-medium-*-*-*-14-*-*-*-*-*-*-*
-!URxvt.font: 9x15
 URxvt.perl-ext-common: default,clipboard
 
 ! terminal colors ------------------------------------------------------------
 ! tangoesque scheme
-*background: #000000
-*foreground: #babdb6
+URxvt.background: #000000
+URxvt.foreground: #babdb6
 ! Black (not tango) + DarkGrey
 *color0:  #000000
 *color8:  #555753

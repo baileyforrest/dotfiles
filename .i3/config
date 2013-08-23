@@ -140,7 +140,7 @@ bindcode $mod+69 exec "amixer sset 'Master' 1%+"
 #for_window [window_role="pop-up"] floating enable
 
 # background wallpaper
-exec --no-startup-id "feh --bg-scale /home/bcforres/Pictures/wallpaper/music_equalizer-wallpaper-1920x1200.jpg"
+exec --no-startup-id "feh --bg-scale /home/bcforres/Pictures/System_Pics/Wallpaper/music_equalizer-wallpaper-1920x1200.jpg"
 
 # exec start up applications
 exec "pulseaudio --start"
