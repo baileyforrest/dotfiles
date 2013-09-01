@@ -41,9 +41,9 @@ highlight LineNr ctermfg=10 ctermbg=234
 set t_Co=256
 
 " Mark Trailing white spaces
-set listchars=trail:~
-set listchars=tab:>-
 set list
+set listchars=tab:>-
+set listchars=trail:~
 highlight SpecialKey ctermfg=14 ctermbg=1
 
 " Highlight lines over 80 char

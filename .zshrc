@@ -38,6 +38,9 @@ alias sshYandrew="ssh -Y bcforres@unix.andrew.cmu.edu"
 alias sshece="ssh bcforres@ece000.ece.cmu.edu"
 alias sshYece="ssh -Y bcforres@ece000.ece.cmu.edu"
 
+# Disable x11-ssh-askpass
+unset SSH_ASKPASS
+
 #colorized man pages
 man() {
     env \
