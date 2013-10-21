@@ -26,6 +26,7 @@ set omnifunc=syntaxcomplete#Complete
 
 syntax on
 set tabstop=4 shiftwidth=4 expandtab " No tabs, default tab width 4
+set textwidth=80
 set autoindent
 set cindent
 set encoding=utf-8
@@ -53,6 +54,12 @@ if exists('+colorcolumn')
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
+
+" Set .sig files to sml
+au BufReadPost *.sig set syntax=sml
+
+" Keyboard shortcuts
+nnoremap <C-c> :bp\|bd # <CR>
 
 " Plugin config
 " Plugin Toggles
