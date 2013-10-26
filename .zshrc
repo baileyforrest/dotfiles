@@ -31,13 +31,6 @@ alias suvim='sudo vim'
 alias ..='cd ..'
 alias detach='sudo udisks --detach'
 
-alias sshshark="ssh bcforres@shark.ics.cs.cmu.edu"
-alias sshandrew="ssh bcforres@unix.andrew.cmu.edu"
-alias sshYshark="ssh -Y bcforres@shark.ics.cs.cmu.edu"
-alias sshYandrew="ssh -Y bcforres@unix.andrew.cmu.edu"
-alias sshece="ssh bcforres@ece000.ece.cmu.edu"
-alias sshYece="ssh -Y bcforres@ece000.ece.cmu.edu"
-
 # Disable x11-ssh-askpass
 unset SSH_ASKPASS
 
@@ -56,16 +49,16 @@ man() {
 
 # Marking directories
 export MARKPATH=$HOME/.marks
-function jump { 
+function jump {
     cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
 }
 
-function mark { 
+function mark {
     mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
 }
 
-function unmark { 
-    rm -if $MARKPATH/$1 
+function unmark {
+    rm -if $MARKPATH/$1
 }
 
 function marks {
