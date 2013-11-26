@@ -2,4 +2,4 @@
 ! Turn Menu key into windows key
 !
 
-keycode 135 = Super_R
+keycode 105 = Shift_R

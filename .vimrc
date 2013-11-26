@@ -60,6 +60,7 @@ au BufReadPost *.sig set syntax=sml
 
 " Keyboard shortcuts
 nnoremap <C-c> :bp\|bd # <CR>
+nnoremap ; :
 
 " Plugin config
 " Plugin Toggles
