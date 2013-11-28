@@ -1,0 +1,10 @@
+#!/bin/sh
+
+xset +fp /usr/share/fonts/local
+xset fp rehash
+xrdb merge /home/bcforres/.Xresources &
+urxvtd -q -o -f
+wicd-client --tray &
+#nm-applet&
+
+~/.custom_profile
