@@ -1,8 +1,8 @@
 #!/bin/sh
-
+# .xprofile
 xset +fp /usr/share/fonts/local
 xset fp rehash
 xrdb merge /home/bcforres/.Xresources &
 urxvtd -q -o -f
 
-[ ! -s ~/.custom_profile ] && ~/.custom_profile
+[ -f ~/.custom_profile ] && source ~/.custom_profile
