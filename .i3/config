@@ -14,7 +14,7 @@ font "-*-Terminus-medium-*-*-*-12-*-*-*-*-*-*-*"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec "urxvt -e screen"
+bindsym $mod+Return exec "urxvt"
 
 # start browser
 bindcode $mod+31 exec "chromium"

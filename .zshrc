@@ -34,6 +34,15 @@ alias detach='sudo udisks --detach'
 # Disable x11-ssh-askpass
 unset SSH_ASKPASS
 
+case $TERM in
+    xterm*)
+        precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+        ;;
+    rxvt*)
+        precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+        ;;
+esac
+
 #colorized man pages
 man() {
     env \
