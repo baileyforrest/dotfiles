@@ -17,6 +17,7 @@ Bundle 'wavded/vim-stylus'
 Bundle 'scrooloose/syntastic'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-scripts/verilog_systemverilog.vim'
 
 " Enable filetype plugins
 filetype plugin indent on
