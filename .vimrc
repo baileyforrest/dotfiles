@@ -35,7 +35,12 @@ set nobackup " No backup files
 set directory=~/.tmp/vim " Vim .swp file location
 
 " Line number config
-set relativenumber " Show line numbers from cursor
+if exists('+relativenumber')
+    set relativenumber " Show line numbers from cursor
+else
+    set number
+endif
+
 highlight LineNr ctermfg=10 ctermbg=234
 
 " Enable 256 colors
