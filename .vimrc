@@ -49,8 +49,7 @@ set t_Co=256
 
 " Mark Trailing white spaces
 set list
-set listchars=tab:>-
-set listchars=trail:~
+set listchars=trail:~,tab:>-
 highlight SpecialKey ctermfg=14 ctermbg=1
 
 " Highlight lines over 80 char
