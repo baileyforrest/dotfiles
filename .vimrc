@@ -29,7 +29,6 @@ syntax on
 set tabstop=4 shiftwidth=4 expandtab " No tabs, default tab width 4
 set textwidth=80
 set autoindent
-set cindent
 set encoding=utf-8
 set laststatus=2 " Always enable status line
 set nobackup " No backup files
@@ -66,6 +65,8 @@ au BufReadPost *.sig set syntax=sml
 " Keyboard shortcuts
 nnoremap <C-c> :bp\|bd # <CR>
 nnoremap ; :
+inoremap jj <ESC>
+let mapleader=","
 
 " Plugin config
 " Plugin Toggles
