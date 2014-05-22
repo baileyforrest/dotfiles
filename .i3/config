@@ -15,6 +15,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec "urxvtc -e tmux"
+bindsym $mod+Shift+Return exec "urxvtc"
 
 # start browser
 bindcode $mod+31 exec "chromium"
