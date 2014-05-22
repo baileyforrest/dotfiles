@@ -12,3 +12,4 @@ PS1='\[\033[0;32m\]\u \[\033[1;31m\]\W/\[\033[0m\] '
 alias suvim='sudo vim'
 alias ..='cd ..'
 export EDITOR=vim
+[ -f $HOME/paths ] && . [ $HOME/paths ]
