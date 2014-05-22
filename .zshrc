@@ -23,9 +23,7 @@ RPROMPT="[%{$fg[magenta]%}%T %{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 export BROWSER="chromium --allow-file-access-from-files"
 export EDITOR=vim
-
-# Start TMUX
-[[ -z "$TMUX" ]] && exec tmux
+export PATH="~/bin:$PATH"
 
 # Aliases
 alias ls='ls --color=auto'
