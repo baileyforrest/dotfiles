@@ -23,7 +23,6 @@ RPROMPT="[%{$fg[magenta]%}%T %{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 export BROWSER="chromium --allow-file-access-from-files"
 export EDITOR=vim
-[ -f $HOME/.paths ] && . $HOME/.paths
 
 # Aliases
 alias ls='ls --color=auto'
