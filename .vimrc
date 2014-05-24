@@ -34,6 +34,9 @@ set laststatus=2 " Always enable status line
 set nobackup " No backup files
 set directory=~/.tmp/vim " Vim .swp file location
 
+" Set up spelling errors to look nicer
+hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=red ctermbg=NONE term=underline cterm=underline
+
 " Line number config
 if exists('+relativenumber')
     set relativenumber " Show line numbers from cursor
