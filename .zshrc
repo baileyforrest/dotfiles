@@ -2,10 +2,16 @@
 
 zstyle :compinstall filename '/home/bcforres/.zshrc'
 
+# Enable auto completion
 autoload -Uz compinit
 compinit
+
+# Emacs key binds
 bindkey -e
+
 ZDOTDIR=~/.zsh
+
+# Word select similar to bash
 autoload -U select-word-style
 select-word-style bash
 stty -ixon
