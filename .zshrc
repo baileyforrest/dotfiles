@@ -16,45 +16,16 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 # Variables
-autoload -U colors zsh/terminfo # Used in the colour alias below
+autoload -U colors zsh/terminfo # Used in the color alias below
 colors
 PROMPT="%{$fg[green]%}%n%  %{$fg_no_bold[red]%}%1~ %{$fg[cyan]%}%# %{$reset_color%}"
 RPROMPT="[%{$fg[magenta]%}%T %{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
-export BROWSER="chromium --allow-file-access-from-files"
-export EDITOR=vim
-
-# Aliases
-alias ls='ls --color=auto'
-alias usbmount='sudo mount -o gid=users,fmask=113,dmask=002'
-alias suvim='sudo vim'
-alias ..='cd ..'
-alias detach='sudo udisks --detach'
-
-# Disable x11-ssh-askpass
-unset SSH_ASKPASS
-
-case $TERM in
-    xterm*)
-        precmd () {print -Pn "\e]0;%n@%m: %~\a"}
-        ;;
-    rxvt*)
-        precmd () {print -Pn "\e]0;%n@%m: %~\a"}
-        ;;
-esac
-
-#colorized man pages
-man() {
-    env \
-        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-        LESS_TERMCAP_md=$(printf "\e[1;31m") \
-        LESS_TERMCAP_me=$(printf "\e[0m") \
-        LESS_TERMCAP_se=$(printf "\e[0m") \
-        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-        LESS_TERMCAP_ue=$(printf "\e[0m") \
-        LESS_TERMCAP_us=$(printf "\e[1;32m") \
-        man "$@"
-}
+# Load configuration files
+for config in .aliases .funcs; do
+    [[ -r $HOME/$config ]] && . "$HOME/$config"
+done
+unset config
 
 # Marking directories
 export MARKPATH=$HOME/.marks

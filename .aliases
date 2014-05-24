@@ -1,0 +1,9 @@
+#!/bin/bash
+# Shell aliases
+
+# Aliases
+alias ls='ls --color'
+alias usbmount='sudo mount -o gid=users,fmask=113,dmask=002'
+alias suvim='sudo vim'
+alias ..='cd ..'
+alias detach='sudo udisks --detach'
