@@ -64,6 +64,7 @@ endif
 
 " Set .sig files to sml
 au BufReadPost *.sig set syntax=sml
+au BufReadPost *.glsl set syntax=c
 
 " Keyboard shortcuts
 nnoremap <C-c> :bp\|bd # <CR>

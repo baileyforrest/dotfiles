@@ -8,7 +8,7 @@ set $down 45
 set $up 46
 set $right 47
 
-font "-*-Terminus-medium-*-*-*-14-*-*-*-*-*-*-*"
+font "-*-Terminus-medium-*-*-*-12-*-*-*-*-*-*-*"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -33,7 +33,7 @@ bindcode $mod+33 exec "i3lock"
 bindcode 107 exec "scrot -e 'mv $f ~/Pictures/screenshots/ 2>/dev/null'"
 
 # switch keyboard layout
-bindcode $mod+95 exec "setxkbmap dvp"
+bindcode $mod+95 exec "setxkbmap -layout us -variant dvp"
 bindcode $mod+96 exec "setxkbmap us"
 
 # change focus
