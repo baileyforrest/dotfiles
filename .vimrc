@@ -1,10 +1,10 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 
 " Bundle plugins
 Bundle 'kien/ctrlp.vim'
@@ -18,6 +18,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-scripts/verilog_systemverilog.vim'
+
+call vundle#end()
 
 " Enable filetype plugins
 filetype plugin indent on
