@@ -8,6 +8,9 @@ set $down 45
 set $up 46
 set $right 47
 
+# Focus does not follow mouse
+focus_follows_mouse no
+
 font "-*-Terminus-medium-*-*-*-12-*-*-*-*-*-*-*"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
