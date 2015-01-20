@@ -137,8 +137,8 @@ bar {
 bindcode $mod+70 exec "mpc toggle"
 
 # volume control
-bindcode $mod+68 exec "amixer sset 'Master' 1%-"
-bindcode $mod+69 exec "amixer sset 'Master' 1%+"
+bindcode $mod+68 exec "pulseaudio-ctl down 1"
+bindcode $mod+69 exec "pulseaudio-ctl up 1"
 
 # exec start up applications
 exec "pulseaudio --start"

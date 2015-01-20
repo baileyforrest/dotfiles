@@ -1,9 +1,14 @@
 #!/bin/bash
 
-ignore=( backup install.sh .config .git .gitmodules .gitignore .. . )
+CONFIG=".config"
+ignore=( backup install.sh $CONFIG .git .gitignore .. . )
 
-DIR=~/.dotfiles
+# DIR = directory of this script
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+
+
+# Handle home dotfiles
 cd $DIR
 for filename in .*
 do
@@ -18,21 +23,43 @@ do
     done
 
     # if you shouldn't ignore, and it's not already linked
-    if [ $shouldIgnore == false -a ! -L ~/$filename ]
+    if [ $shouldIgnore == false -a ! -L $HOME/$filename ]
     then
 
         # move old versions moved to backup dir
-        if [ -e ~/$filename ]
+        if [ -e $HOME/$filename ]
         then
             echo ${filename} moved to ${DIR}/backups/${filename}
-            mv ~/$filename $DIR/backups/
+            mv $HOME/$filename $DIR/backups/
         fi
 
         # create the link
-        echo new link ~/${filename} to ${DIR}/backups/${filename}
-        ln -s $DIR/$filename ~/$filename
+        echo new link $HOME/${filename} to ${DIR}/${filename}
+        ln -s $DIR/$filename $HOME/$filename
     fi
 done
 
-# source .zshrc
-# source ~/.zshrc
+# Handle .config dotfiles
+cd $DIR/$CONFIG
+if [ ! -d "$HOME/$CONFIG" ]; then
+    mkdir "$HOME/$CONFIG"
+fi
+
+for filename in .*
+do
+    # If it's not already linked
+    if [ ! -L $HOME/$CONFIG/$filename ]
+    then
+
+        # move old versions moved to backup dir
+        if [ -e $HOME/$CONFIG/$filename ]
+        then
+            echo ${filename} moved to ${DIR}/backups/$CONFIG/${filename}
+            mv $HOME/$filename $DIR/backups/$CONFIG
+        fi
+
+        # create the link
+        echo new link $HOME/$CONFIG/${filename} to ${DIR}/$CONFIG/${filename}
+        ln -s $DIR/$CONFIG/$filename $HOME/$CONFIG/$filename
+    fi
+done
