@@ -8,13 +8,11 @@ xset fp rehash
 # .Xresources
 xrdb merge /home/bcforres/.Xresources &
 
-# Start urxvt daemon
-urxvtd -q -o -f
-
 # Set keyboard layout
 setxkbmap -layout us -variant dvp
 
 # Load wallpaper
 feh --bg-scale "$HOME/Pictures/System_Pics/Wallpaper/current.jpg"
 
-[ -f ~/.custom_profile ] && source ~/.custom_profile
+# Source machine specific config
+[ -f ~/.custom_profile ] && . ~/.custom_profile
