@@ -6,7 +6,14 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 
 # .Xresources
-xrdb merge /home/bcforres/.Xresources &
+if [ -f "$XDG_CONFIG_HOME/Xresources" ]; then
+  xrdb -merge "$XDG_CONFIG_HOME/Xresources"
+fi
+
+# xmodmap
+if [ -f "$XDG_CONFIG_HOME/Xmodmap" ]; then
+  xmodmap "$XDG_CONFIG_HOME/Xmodmap"
+fi
 
 # Set keyboard layout
 setxkbmap -layout us -variant dvp

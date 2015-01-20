@@ -8,6 +8,6 @@
 PS1='\[\033[0;32m\]\u \[\033[1;31m\]\W/\[\033[0m\] '
 
 for config in .aliases .funcs; do
-    [[ -r $HOME/.config/$config ]] && . "$HOME/.config/$config"
+    [[ -r $XDG_CONFIG_HOME/shell/$config ]] && . "$XDG_CONFIG_HOME/shell/$config"
 done
 unset config
