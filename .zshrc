@@ -29,7 +29,7 @@ RPROMPT="[%{$fg[magenta]%}%T %{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 # Load configuration files
 for config in .aliases .funcs; do
-    [[ -r $HOME/$config ]] && . "$HOME/$config"
+    [[ -r $HOME/.config/$config ]] && . "$HOME/.config/$config"
 done
 unset config
 
