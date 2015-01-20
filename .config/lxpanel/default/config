@@ -1,4 +1,0 @@
-[Command]
-FileManager=thunar
-Terminal=urxvt
-Logout=openbox --exit
