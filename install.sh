@@ -45,7 +45,7 @@ if [ ! -d "$HOME/$CONFIG" ]; then
     mkdir "$HOME/$CONFIG"
 fi
 
-for filename in .*
+for filename in *
 do
     # If it's not already linked
     if [ ! -L $HOME/$CONFIG/$filename ]
