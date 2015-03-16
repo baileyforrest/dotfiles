@@ -5,7 +5,7 @@
 
 [[ -z $LOCAL_PREFIX ]] && export LOCAL_PREFIX="$HOME/local"
 
-export EDITOR=vim
+export EDITOR="emacs -nw"
 export BROWSER=chromium
 
 
