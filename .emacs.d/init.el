@@ -79,11 +79,17 @@
 (require 'evil)
 (evil-mode 1)                                         ;; Enable evil mode
 (define-key evil-normal-state-map (kbd "m") 'evil-ex) ;; map m to evil ex
+(global-evil-tabs-mode t)                             ;; Use evil tabs
+(setq elscreen-display-tab nil)                       ;; Disable tab bar
+
+(global-set-key (kbd "C-c t a b e") 'elscreen-create)
+(global-set-key (kbd "C-c t a b d") 'elscreen-kill)
+(global-set-key (kbd "C-c g T") 'elscreen-previous)
+(global-set-key (kbd "C-c g t") 'elscreen-next)
 
 (require 'key-chord)      ;; jj for escape key in evil mode
 (key-chord-mode 1)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-
 
 (require 'linum-relative) ;; Use relative line numbers
 
@@ -115,12 +121,12 @@
 
 ;; Key bindings
 (define-key evil-normal-state-map (kbd "C-]") 'ggtags-find-tag-dwim)
-(define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
-(define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
-(define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
-(define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
-(define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
-(define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
+(global-set-key (kbd "C-c t s") 'ggtags-find-other-symbol)
+(global-set-key (kbd "C-c t h") 'ggtags-view-tag-history)
+(global-set-key (kbd "C-c t r") 'ggtags-find-reference)
+(global-set-key (kbd "C-c t f") 'ggtags-find-file)
+(global-set-key (kbd "C-c t c") 'ggtags-create-tags)
+(global-set-key (kbd "C-c t u") 'ggtags-update-tags)
 
 
 ;;(require 'company)

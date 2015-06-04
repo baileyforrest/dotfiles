@@ -18,6 +18,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-scripts/verilog_systemverilog.vim'
+Bundle 'altercation/vim-colors-solarized.git'
 
 call vundle#end()
 
@@ -71,10 +72,12 @@ au BufReadPost *.glsl set syntax=c
 " Keyboard shortcuts
 nnoremap <C-c> :bp\|bd # <CR>
 nnoremap ; :
+nnoremap m :
 inoremap jj <ESC>
 let mapleader=","
 
 " Plugin config
+
 " Plugin Toggles
 nmap <F8> :TagbarToggle<CR>
 nmap <c-_> :NERDTreeToggle<CR>
