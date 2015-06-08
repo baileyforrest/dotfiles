@@ -31,8 +31,12 @@
 (add-hook 'text-mode-hook (lambda () (linum-mode 1)))
 
 ;; GUI Configuration
-(scroll-bar-mode -1)         ;; Disable scroll bars
-(tool-bar-mode -1)           ;; Disable the toolbar
+(if (display-graphic-p)
+    (progn
+      (tool-bar-mode -1)     ;; Disable the toolbar
+      (scroll-bar-mode -1)   ;; Disable scroll bars
+      (set-frame-size (selected-frame) 85 30)
+      ))
 
 ;; Tabbing options
 (setq-default tab-width 4 indent-tabs-mode nil)       ;; Use 4 spaces for tabs
