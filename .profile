@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# Set XDG_CONFIG_HOME if its not set yet
+# Set XDG variables if not set
 [[ -z $XDG_CONFIG_HOME ]] && export XDG_CONFIG_HOME="$HOME/.config"
+[[ -z $XDG_CACHE_HOME ]] && export XDG_CACHE_HOME="$HOME/.cache"
+[[ -z $XDG_DATA_HOME ]] && export XDG_DATA_HOME="$HOME/.local/share"
 
 [[ -z $LOCAL_PREFIX ]] && export LOCAL_PREFIX="$HOME/local"
 
-export EDITOR="emacs -nw"
+export EDITOR=vim
 export BROWSER=chromium
 
 
