@@ -1,6 +1,5 @@
-# Bailey Forrest - baileycforrest@gmail.com
-#
 # i3 config file (v4)
+# Bailey Forrest - baileycforrest@gmail.com
 
 set $mod Mod4
 set $left 44
