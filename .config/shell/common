@@ -1,0 +1,13 @@
+#!/bin/bash
+# Common shell configuration options
+# Bailey Forrest <baileycforrest@gmail.com>
+
+# Load configuration files
+for config in $XDG_CONFIG_HOME/shell/source/*; do
+    . $config
+done
+unset config
+
+DIRCOLORS=$XDG_CONFIG_HOME/shell/dircolors
+test -r $DIRCOLORS && eval "$(dircolors $DIRCOLORS)"
+unset DIRCOLORS

@@ -1,3 +1,8 @@
+[alias]
+    d = diff
+    c = commit
+    l = log
+    s = status
 [user]
 	name = Bailey Forrest
 	email = baileycforrest@gmail.com

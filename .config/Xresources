@@ -1,6 +1,6 @@
 Xcursor.theme: Vanilla-DMZ-AA
 URxvt.scrollBar: false
-URxvt*font: -*-Terminus-medium-*-*-*-24-*-*-*-*-*-*-*
+URxvt*font: -*-Terminus-medium-*-*-*-18-*-*-*-*-*-*-*
 
 ! terminal colors ------------------------------------------------------------
 ! tangoesque scheme

@@ -1,4 +1,5 @@
 #!/bin/bash
+# Bailey Forrest <baileycforrest@gmail.com>
 
 #colorized man pages
 man() {

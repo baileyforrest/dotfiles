@@ -1,16 +1,15 @@
 #!/bin/bash
 # Shell aliases
+# Bailey Forrest <baileycforrest@gmail.com>
 
 # Aliases
 
 if [[ "$(uname)" == "Darwin" ]]; then
     alias ls='ls -G'
 else
-    alias ls='ls --color'
+    alias ls='ls --color=auto'
 fi
 
 alias usbmount='sudo mount -o gid=users,fmask=113,dmask=002'
 alias suvim='sudo vim'
-alias ..='cd ..'
-alias detach='sudo udisks --detach'
-alias emacs='emacs -nw'
+alias ll='ls -l'
