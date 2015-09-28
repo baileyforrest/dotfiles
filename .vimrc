@@ -1,61 +1,62 @@
+" .vimrc
+" Bailey Forrest <baileycforrest@gmail.com>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle Configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
-" Bundle plugins
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'majutsushi/tagbar'
-Bundle 'pangloss/vim-javascript'
-Bundle 'klen/python-mode'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'wavded/vim-stylus'
-Bundle 'scrooloose/syntastic'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'vim-scripts/verilog_systemverilog.vim'
-Bundle 'altercation/vim-colors-solarized.git'
+" Plugin plugins
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
-" Enable filetype plugins
-filetype plugin indent on
+filetype plugin indent on " Enable filetype plugins
+set omnifunc=syntaxcomplete#Complete " Enable omnicomplete
 
-" Enable omnicomplete
-set omnifunc=syntaxcomplete#Complete
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 set tabstop=4 shiftwidth=4 expandtab " No tabs, default tab width 4
 set textwidth=80
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nobackup " No backup files
+set directory=$XDG_DATA_HOME/vim " Vim .swp file location
 set autoindent
 set encoding=utf-8
+set wildmode=longest,list,full " Tab expand up partial matches
+set wildmenu " Open matching window
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GUI Configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme molokai
 set laststatus=2 " Always enable status line
-set nobackup " No backup files
-set directory=~/.tmp/vim " Vim .swp file location
+set t_Co=256 " Enable 256 colors
 
-" Set up spelling errors to look nicer
-hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=red ctermbg=NONE term=underline cterm=underline
-
-" Line number config
 if exists('+relativenumber')
     set relativenumber " Show line numbers from cursor
 else
     set number
 endif
-
-highlight LineNr ctermfg=10 ctermbg=234
-
-" Enable 256 colors
-set t_Co=256
-
-" Mark Trailing white spaces
-set list
-set listchars=trail:~,tab:>-
-highlight SpecialKey ctermfg=14 ctermbg=1
 
 " Highlight lines over 80 char
 if exists('+colorcolumn')
@@ -65,18 +66,38 @@ else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
-" Set .sig files to sml
-au BufReadPost *.sig set syntax=sml
-au BufReadPost *.glsl set syntax=c
+" Mark Trailing white spaces
+set list
+set listchars=trail:~,tab:>-
+highlight SpecialKey ctermfg=14 ctermbg=1
 
+" Set up spelling errors to look nicer
+hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=red ctermbg=NONE term=underline cterm=underline
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Keyboard shortcuts
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <C-c> :bp\|bd # <CR>
+nnoremap <F4> :make!<cr>
 nnoremap ; :
 nnoremap m :
 inoremap jj <ESC>
-let mapleader=","
+nnoremap <leader>en <esc>:cn <cr>
+nnoremap <leader>ep <esc>:cp <cr>
+let mapleader=" "
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Alternative syntax for filetypes
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufReadPost *.sig set syntax=sml
+au BufReadPost *.glsl set syntax=c
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Plugin Toggles
 nmap <F8> :TagbarToggle<CR>
@@ -88,12 +109,12 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = ''
 
 " Syntastic Options
-"let g:syntastic_check_on_open=1 "Check syntax of file open
-
-" html indent options
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+let g:syntastic_check_on_open=1 "Check syntax of file open
 
 " JSLint options
 let g:syntastic_javascript_checkers = ['jshint']
+
+" Default ycm conf for scratch files
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>yd :YcmDiags<CR>
