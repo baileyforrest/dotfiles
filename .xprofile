@@ -22,4 +22,4 @@ setxkbmap -layout us -variant dvp
 feh --bg-scale "$HOME/Pictures/System_Pics/Wallpaper/current.jpg"
 
 # Source machine specific config
-[ -f $HOME/.custom_profile ] && . $HOME/.custom_profile
+[ -f $HOME/.custom_xprofile ] && . $HOME/.custom_xprofile

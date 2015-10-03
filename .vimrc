@@ -14,6 +14,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Plugin plugins
+Plugin 'tpope/vim-sleuth'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
@@ -43,6 +44,7 @@ set autoindent
 set encoding=utf-8
 set wildmode=longest,list,full " Tab expand up partial matches
 set wildmenu " Open matching window
+set iskeyword-=_ " Underscores are not part of words
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -87,6 +89,12 @@ nnoremap <leader>en <esc>:cn <cr>
 nnoremap <leader>ep <esc>:cp <cr>
 let mapleader=" "
 
+" Expand %% to file's current path
+cabbr <expr> %% expand('%:p:h')
+
+" Open :e with cwd expanded
+nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Alternative syntax for filetypes
@@ -105,7 +113,7 @@ nmap <c-_> :NERDTreeToggle<CR>
 
 " Toggle CtrlP
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = ''
 
 " Syntastic Options
