@@ -1,8 +1,9 @@
 [alias]
-    d = diff
+    b = branch
     c = commit
+    d = diff
     l = log
-    s = status
+    s = status -sb
 [user]
 	name = Bailey Forrest
 	email = baileycforrest@gmail.com

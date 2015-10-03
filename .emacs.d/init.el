@@ -73,6 +73,11 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+;; Guess python code style
+(add-hook 'python-mode-hook 'guess-style-guess-tabs-mode)
+(add-hook 'python-mode-hook (lambda ()
+                              (when indent-tabs-mode
+                                (guess-style-guess-tab-width))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Plugin config
@@ -96,6 +101,12 @@
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
 (require 'linum-relative) ;; Use relative line numbers
+
+;; Auto detect line width
+(add-hook 'c-mode-common-hook
+          (lambda()
+            (require 'dtrt-indent)
+            (dtrt-indent-mode t)))
 
 (require 'sr-speedbar) ;; Speedbar Configuration
 (global-set-key [f12] 'sr-speedbar-toggle) ;; open with F12

@@ -14,6 +14,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Plugin plugins
+Plugin 'tpope/vim-sleuth'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
@@ -30,7 +31,7 @@ set omnifunc=syntaxcomplete#Complete " Enable omnicomplete
 " Syntax configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
-set tabstop=4 shiftwidth=4 expandtab " No tabs, default tab width 4
+set shiftwidth=4 expandtab
 set textwidth=80
 
 
@@ -68,7 +69,7 @@ endif
 
 " Mark Trailing white spaces
 set list
-set listchars=trail:~,tab:>-
+set listchars=trail:·,tab:▸-
 highlight SpecialKey ctermfg=14 ctermbg=1
 
 " Set up spelling errors to look nicer
@@ -86,6 +87,17 @@ inoremap jj <ESC>
 nnoremap <leader>en <esc>:cn <cr>
 nnoremap <leader>ep <esc>:cp <cr>
 let mapleader=" "
+
+" Expand %% to file's current path
+cabbr <expr> %% expand('%:p:h')
+
+" Open :e with cwd expanded
+nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
+
+" Open :/? in buffer mode
+nnoremap <Leader>m q:i
+nnoremap <Leader>/ q/i
+nnoremap <Leader>? q?i
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,7 +117,7 @@ nmap <c-_> :NERDTreeToggle<CR>
 
 " Toggle CtrlP
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = ''
 
 " Syntastic Options

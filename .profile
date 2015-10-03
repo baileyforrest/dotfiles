@@ -11,12 +11,6 @@ export EDITOR=vim
 export BROWSER=chromium
 
 
-# Colorized ls
-if [[ -r $XDG_CONFIG_HOME/shell/dircolors ]] && type -p dircolors > /dev/null; then
-    eval $(dircolors -b "$XDG_CONFIG_HOME/shell/dircolors")
-fi
-
-
 # Local prefix
 if [ -d "$LOCAL_PREFIX" ]; then
     PATH="$LOCAL_PREFIX/bin:$PATH"
@@ -39,6 +33,18 @@ fi
 # cabal configuration
 if which cabal > /dev/null; then
     PATH="$HOME/.cabal/bin:$PATH"
+fi
+
+
+# depot_tools
+if [ -d "$HOME/depot_tools" ] ; then
+    PATH="$HOME/depot_tools:$PATH"
+fi
+
+
+# local bin
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
 fi
 
 
