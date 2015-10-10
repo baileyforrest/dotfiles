@@ -44,6 +44,7 @@ set autoindent
 set encoding=utf-8
 set wildmode=longest,list,full " Tab expand up partial matches
 set wildmenu " Open matching window
+set iskeyword-=_ " Underscores are not part of words
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -98,7 +99,6 @@ nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <Leader>m q:i
 nnoremap <Leader>/ q/i
 nnoremap <Leader>? q?i
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Alternative syntax for filetypes
