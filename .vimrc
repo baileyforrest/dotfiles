@@ -44,7 +44,6 @@ set autoindent
 set encoding=utf-8
 set wildmode=longest,list,full " Tab expand up partial matches
 set wildmenu " Open matching window
-set iskeyword-=_ " Underscores are not part of words
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -56,9 +55,8 @@ set t_Co=256 " Enable 256 colors
 
 if exists('+relativenumber')
     set relativenumber " Show line numbers from cursor
-else
-    set number
 endif
+set number " Number shows current line number on 0 position if relative enabled
 
 " Highlight lines over 80 char
 if exists('+colorcolumn')
