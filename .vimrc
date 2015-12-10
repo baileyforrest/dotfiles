@@ -14,11 +14,11 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Plugin plugins
-Plugin 'tpope/vim-sleuth'
+Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-sleuth'
 Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
@@ -44,6 +44,7 @@ set autoindent
 set encoding=utf-8
 set wildmode=longest,list,full " Tab expand up partial matches
 set wildmenu " Open matching window
+set spelllang=en_us " American English for spell checking
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -55,8 +56,9 @@ set t_Co=256 " Enable 256 colors
 
 if exists('+relativenumber')
     set relativenumber " Show line numbers from cursor
+else
+    set number " Number shows current line number on 0 position if relative enabled
 endif
-set number " Number shows current line number on 0 position if relative enabled
 
 " Highlight lines over 80 char
 if exists('+colorcolumn')
@@ -66,10 +68,10 @@ else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
-" Mark Trailing white spaces
+" Show trailing whitespace and tabs as characters
 set list
 set listchars=trail:·,tab:▸-
-highlight SpecialKey ctermfg=14 ctermbg=1
+highlight SpecialKey ctermfg=1
 
 " Set up spelling errors to look nicer
 hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=red ctermbg=NONE term=underline cterm=underline
@@ -109,6 +111,14 @@ au BufReadPost *.glsl set syntax=c
 " Plugin config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Configure gtags
+set cscopetag
+nnoremap <Leader>gg :GtagsCscope<CR>
+nnoremap <Leader>gc :cclose<CR>
+nnoremap <Leader>gn :cn<CR>
+nnoremap <Leader>gp :cp<CR>
+nnoremap <Leader>gr :Gtags -r<CR><CR>
+
 " Plugin Toggles
 nmap <F8> :TagbarToggle<CR>
 nmap <c-_> :NERDTreeToggle<CR>
@@ -117,6 +127,8 @@ nmap <c-_> :NERDTreeToggle<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = ''
+nnoremap <Leader>p :CtrlPMixed<CR>
+nnoremap <Leader>b :CtrlPBuffer<CR>
 
 " Syntastic Options
 let g:syntastic_check_on_open=1 "Check syntax of file open

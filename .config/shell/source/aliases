@@ -13,3 +13,5 @@ fi
 alias usbmount='sudo mount -o gid=users,fmask=113,dmask=002'
 alias suvim='sudo vim'
 alias ll='ls -l'
+alias gp='grep --color=auto -n -r'
+alias v='vim'
