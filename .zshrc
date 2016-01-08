@@ -5,8 +5,8 @@ ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # History
 HISTFILE=$ZDOTDIR/histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 
 bindkey -e # Emacs key binds
 autoload -Uz compinit; compinit # Enable auto completion
