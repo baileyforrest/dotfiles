@@ -1,38 +1,37 @@
 " .vimrc
 " Bailey Forrest <baileycforrest@gmail.com>
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle Configuration
+" Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
+Plug 'bling/vim-airline'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/syntastic'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'tomasr/molokai'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sleuth'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 
-" Plugin plugins
-Plugin 'bling/vim-airline'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-sleuth'
-Plugin 'Valloric/YouCompleteMe'
+call plug#end()
 
-call vundle#end()
-
-filetype plugin indent on " Enable filetype plugins
 set omnifunc=syntaxcomplete#Complete " Enable omnicomplete
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax on
-set shiftwidth=4 expandtab
 set textwidth=80
+set cinoptions=l1 " Sane c/c++ switch case indentation
+
+" Alternative syntax for filetypes
+au BufReadPost *.sig set syntax=sml
+au BufReadPost *.glsl set syntax=c
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -40,10 +39,7 @@ set textwidth=80
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup " No backup files
 set directory=$XDG_DATA_HOME/vim " Vim .swp file location
-set autoindent
-set encoding=utf-8
 set wildmode=longest,list,full " Tab expand up partial matches
-set wildmenu " Open matching window
 set spelllang=en_us " American English for spell checking
 
 " Jump to the last position when reopening a file
@@ -76,7 +72,6 @@ autocmd CompleteDone * pclose
 " GUI Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme molokai
-set laststatus=2 " Always enable status line
 set t_Co=256 " Enable 256 colors
 
 if exists('+relativenumber')
@@ -85,9 +80,8 @@ else
     set number " Number shows current line number on 0 position if relative enabled
 endif
 
-" Highlight lines over 80 char
 if exists('+colorcolumn')
-    set colorcolumn=80
+    set colorcolumn=+0
     hi ColorColumn ctermbg=235
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
@@ -95,8 +89,7 @@ endif
 
 " Show trailing whitespace and tabs as characters
 set list
-set listchars=trail:·,tab:▸-
-highlight SpecialKey ctermfg=1
+set listchars=trail:·,tab:▸-,extends:>,precedes:<,nbsp:+
 
 " Set up spelling errors to look nicer
 hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=red ctermbg=NONE term=underline cterm=underline
@@ -126,12 +119,6 @@ nnoremap <leader>m q:i
 nnoremap <leader>/ q/i
 nnoremap <leader>? q?i
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Alternative syntax for filetypes
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufReadPost *.sig set syntax=sml
-au BufReadPost *.glsl set syntax=c
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin config
@@ -150,22 +137,6 @@ nnoremap <leader>gn :cn<cr>
 nnoremap <leader>gp :cp<cr>
 nnoremap <leader>gr :Gtags -r<cr><cr>
 
-" Plugin Toggles
-nmap <F8> :TagbarToggle<cr>
-nmap <c-_> :NERDTreeToggle<cr>
-
-" Toggle CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_switch_buffer = '' " Don't switch to window with buffer already open
-let g:ctrlp_max_files = 0 " Unlimited files to scan
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(d|o)$',
-  \ }
-nnoremap <leader>p :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-
 " Syntastic Options
 let g:syntastic_check_on_open=1 "Check syntax of file open
 
@@ -176,3 +147,14 @@ let g:syntastic_javascript_checkers = ['jshint']
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 nnoremap <leader>jd :YcmCompleter GoTo<cr>
 nnoremap <leader>yd :YcmDiags<cr>
+
+" FZF options
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let g:fzf_layout = { 'down': '~40%' }
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>s :Ag<cr>

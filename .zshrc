@@ -23,3 +23,5 @@ RPROMPT="[%{$fg[magenta]%}%T %{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 common=$XDG_CONFIG_HOME/shell/common
 test -r $common && . $common
 unset common
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

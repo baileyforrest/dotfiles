@@ -7,9 +7,15 @@
 
 [[ -z $LOCAL_PREFIX ]] && export LOCAL_PREFIX="$HOME/local"
 
+# Variables
 export EDITOR=vim
 export BROWSER=chromium
+export HISTTIMEFORMAT="[%F %T %z] "
 
+# FZF options
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_OPTS="--tiebreak=length,end"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Local prefix
 if [ -d "$LOCAL_PREFIX" ]; then

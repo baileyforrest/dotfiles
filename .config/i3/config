@@ -38,6 +38,9 @@ bindcode 107 exec "scrot -e 'mv $f ~/Pictures/screenshots/ 2>/dev/null'"
 bindcode $mod+95 exec "setxkbmap -layout us -variant dvp"
 bindcode $mod+96 exec "setxkbmap us"
 
+# Swap workspaces
+bindcode $mod+24 exec "~/.config/i3/scripts/swap_workspaces.py"
+
 # change focus
 bindcode $mod+$left focus left
 bindcode $mod+$down focus down
@@ -49,6 +52,12 @@ bindcode $mod+Shift+$left move left
 bindcode $mod+Shift+$down move down
 bindcode $mod+Shift+$up move up
 bindcode $mod+Shift+$right move right
+
+# Move workspace between monitors
+bindcode $mod+Control+$left move workspace to output left
+bindcode $mod+Control+$down move workspace to output down
+bindcode $mod+Control+$up move workspace to output up
+bindcode $mod+Control+$right move workspace to output right
 
 # split in horizontal orientation
 bindcode $mod+43 split h
