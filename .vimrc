@@ -15,7 +15,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 

@@ -43,10 +43,14 @@ fi
 
 
 # depot_tools
-if [ -d "$HOME/depot_tools" ] ; then
+if [ -d "$HOME/depot_tools" ]; then
     PATH="$HOME/depot_tools:$PATH"
 fi
 
+# golang
+if [ -d "/usr/local/go/bin" ]; then
+    PATH=$PATH:/usr/local/go/bin
+fi
 
 # local bin
 if [ -d "$HOME/bin" ] ; then

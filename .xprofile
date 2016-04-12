@@ -1,10 +1,6 @@
 #!/bin/sh
 # .xprofile
 
-# Update fonts
-xset +fp /usr/share/fonts/local
-xset fp rehash
-
 # .Xresources
 if [ -f "$XDG_CONFIG_HOME/Xresources" ]; then
   xrdb -merge "$XDG_CONFIG_HOME/Xresources"
@@ -19,7 +15,9 @@ fi
 setxkbmap -layout us -variant dvp
 
 # Load wallpaper
-feh --bg-scale "$HOME/Pictures/System_Pics/Wallpaper/current.jpg"
+if [ -f "$XDG_CONFIG_HOME/wallpaper" ]; then
+  feh --bg-scale "$XDG_CONFIG_HOME/wallpaper"
+fi
 
 # Source machine specific config
 [ -f $HOME/.custom_xprofile ] && . $HOME/.custom_xprofile
