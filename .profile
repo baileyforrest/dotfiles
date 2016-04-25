@@ -9,7 +9,7 @@
 
 # Variables
 export EDITOR=vim
-export BROWSER=chromium
+export BROWSER=google-chrome
 export HISTTIMEFORMAT="[%F %T %z] "
 
 # FZF options
@@ -17,49 +17,21 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS="--tiebreak=length,end"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# Local prefix
-if [ -d "$LOCAL_PREFIX" ]; then
-    PATH="$LOCAL_PREFIX/bin:$PATH"
-    LD_LIBRARY_PATH="$LOCAL_PREFIX/lib:$LD_LIBRARY_PATH"
-fi
-
-
 # Find ruby gem path
 if which ruby > /dev/null && which gem > /dev/null; then
-    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+    PATH="$PATH:$(ruby -rubygems -e 'puts Gem.user_dir')/bin"
 fi
 
+PATH="$LOCAL_PREFIX/bin:$PATH"
+LD_LIBRARY_PATH="$LOCAL_PREFIX/lib:$LD_LIBRARY_PATH"
 
-# OPAM configuration
-if which opam > /dev/null; then
-    . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-fi
+PATH="$PATH:$HOME/.dotfiles/scripts"
+PATH="$PATH:$HOME/.cabal/bin"
+PATH="$PATH:$HOME/depot_tools"
+PATH="$PATH:/usr/local/go/bin"
 
-
-# cabal configuration
-if which cabal > /dev/null; then
-    PATH="$HOME/.cabal/bin:$PATH"
-fi
-
-
-# depot_tools
-if [ -d "$HOME/depot_tools" ]; then
-    PATH="$HOME/depot_tools:$PATH"
-fi
-
-# golang
-if [ -d "/usr/local/go/bin" ]; then
-    PATH=$PATH:/usr/local/go/bin
-fi
-
-# local bin
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-
-export PATH="$PATH"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH"
+export PATH="$($HOME/.dotfiles/clean_path $PATH)"
+export LD_LIBRARY_PATH="$($HOME/.dotfiles/clean_path $LD_LIBRARY_PATH)"
 
 # Disable x11-ssh-askpass
 unset SSH_ASKPASS

@@ -1,23 +1,14 @@
 #!/bin/sh
 # .xprofile
 
-# .Xresources
-if [ -f "$XDG_CONFIG_HOME/Xresources" ]; then
-  xrdb -merge "$XDG_CONFIG_HOME/Xresources"
-fi
-
-# xmodmap
-if [ -f "$XDG_CONFIG_HOME/Xmodmap" ]; then
-  xmodmap "$XDG_CONFIG_HOME/Xmodmap"
-fi
-
 # Set keyboard layout
 setxkbmap -layout us -variant dvp
 
+[ -f $XDG_CONFIG_HOME/Xresources ] && xrdb -merge $XDG_CONFIG_HOME/Xresources
+[ -f $XDG_CONFIG_HOME/Xmodmap ] && xmodmap $XDG_CONFIG_HOME/Xmodmap
+
 # Load wallpaper
-if [ -f "$XDG_CONFIG_HOME/wallpaper" ]; then
-  feh --bg-scale "$XDG_CONFIG_HOME/wallpaper"
-fi
+[ -f $XDG_CONFIG_HOME/wallpaper ] && feh --bg-scale $XDG_CONFIG_HOME/wallpaper
 
 # Source machine specific config
 [ -f $HOME/.custom_xprofile ] && . $HOME/.custom_xprofile

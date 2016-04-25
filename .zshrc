@@ -20,8 +20,6 @@ PROMPT="%{$fg[green]%}%n%  %{$fg_no_bold[red]%}%1~ %{$fg[cyan]%}%# %{$reset_colo
 RPROMPT="[%{$fg[magenta]%}%T %{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 # Source common configuration options
-common=$XDG_CONFIG_HOME/shell/common
-test -r $common && . $common
-unset common
+[ -f $XDG_CONFIG_HOME/shell/common ] && source $XDG_CONFIG_HOME/shell/common
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

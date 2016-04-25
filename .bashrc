@@ -12,9 +12,7 @@ HISTFILESIZE=
 shopt -s histappend # Append to history rather than overwriting.
 
 # Source common configuration options
-common=$XDG_CONFIG_HOME/shell/common
-test -r $common && . $common
-unset common
+[ -f $XDG_CONFIG_HOME/shell/common ] && source $XDG_CONFIG_HOME/shell/common
 
 # Enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then

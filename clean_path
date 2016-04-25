@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+"""Canonicalizes a $PATH variable. Removes duplicates and relative paths."""
+# Bailey Forrest <baileycforrest@gmail.com>
+
+import os
+import sys
+
+def printerr(*objs):
+    """Print objs to stderr."""
+
+    print(*objs, file=sys.stderr)
+
+
+def main():
+    """Main function."""
+
+    if len(sys.argv) != 2:
+        printerr("Usage: {} path_var".format(sys.argv[0]))
+        sys.exit(1)
+
+    dirs = sys.argv[1].split(":")
+    result = []
+    elems = set()
+
+    for directory in dirs:
+        if directory == "":
+            continue
+
+        if directory[0] != "/":
+            printerr("Skipping relative path '{}'".format(directory))
+            continue
+
+        if directory not in elems and os.path.isdir(directory):
+            elems.add(directory)
+            result.append(directory)
+
+    print(":".join(result))
+
+if __name__ == '__main__':
+    main()

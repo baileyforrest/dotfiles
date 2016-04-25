@@ -2,8 +2,6 @@
 # Shell aliases
 # Bailey Forrest <baileycforrest@gmail.com>
 
-# Aliases
-
 if [[ "$(uname)" == "Darwin" ]]; then
     alias ls='ls -G'
 else

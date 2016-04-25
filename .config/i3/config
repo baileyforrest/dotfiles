@@ -16,8 +16,8 @@ font "-*-Terminus-medium-*-*-*-12-*-*-*-*-*-*-*"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec "urxvtc -e tmux"
-bindsym $mod+Shift+Return exec "urxvtc"
+bindsym $mod+Return exec "urxvt -e tmux"
+bindsym $mod+Shift+Return exec "urxvt"
 
 # start browser
 bindcode $mod+31 exec "google-chrome"
@@ -141,12 +141,18 @@ bar {
 }
 
 # Other keyboard shortcuts
-#mpd control
-bindcode $mod+70 exec "mpc toggle"
+# mpd control
+set $mpc_toggle "mpc toggle"
+bindcode $mod+70 exec $mpc_toggle
+bindcode 172 exec $mpc_toggle
 
 # volume control
-bindcode $mod+68 exec "amixer set Master 1%-"
-bindcode $mod+69 exec "amixer set Master 1%+"
+set $volume_down "amixer set Master 1%-"
+set $volume_up "amixer set Master 1%+"
+bindcode $mod+68 exec $volume_down
+bindcode 122 exec $volume_down
+bindcode $mod+69 exec $volume_up
+bindcode 123 exec $volume_up
 
 # exec start up applications
 exec "pulseaudio --start"

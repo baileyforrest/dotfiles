@@ -6,10 +6,13 @@
     d = diff
     l = log
     s = status -sb
+
 [user]
-	name = Bailey Forrest
-	email = baileycforrest@gmail.com
+    name = Bailey Forrest
+    email = baileycforrest@gmail.com
+
 [push]
-	default = simple
+    default = simple
+
 [core]
-	editor = vim
+    editor = vim

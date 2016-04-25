@@ -2,12 +2,16 @@
 # Common shell configuration options
 # Bailey Forrest <baileycforrest@gmail.com>
 
+# Reload .profile
+[ -f $HOME/.profile ] && . $HOME/.profile
+
 # Load configuration files
 for config in $XDG_CONFIG_HOME/shell/source/*; do
     . $config
 done
 unset config
 
+# Set dircolors
 DIRCOLORS=$XDG_CONFIG_HOME/shell/dircolors
 test -r $DIRCOLORS && eval "$(dircolors $DIRCOLORS)"
 unset DIRCOLORS
