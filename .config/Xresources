@@ -29,3 +29,5 @@ URxvt*color14: #46a4ff
 ! LightGrey + White
 URxvt*color7:  #cccccc
 URxvt*color15: #ffffff
+
+URxvt.perl-ext-common: selection-to-clipboard

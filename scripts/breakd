@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+"""Daemon to periodically send break notifications."""
+
+import subprocess
+import sys
+import time
+
+INTERVAL_SHORT = 5
+INTERVAL_LONG = 15
+SLEEP_TIME = 60
+
+def main():
+    """The main function."""
+
+    counter = 0
+
+    while True:
+        if counter % INTERVAL_LONG == 0:
+            notify_send(msg_long())
+            counter = 0
+        elif counter % INTERVAL_SHORT == 0:
+            notify_send(msg_short())
+
+        time.sleep(SLEEP_TIME)
+        counter += 1
+
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
+
+def notify_send(text):
+    """Send text as a system notification.
+
+    Args:
+        text: Text to send as a notification.
+    """
+
+    BINARY_NAME = "notify-send"
+
+    try:
+        subprocess.check_call([BINARY_NAME, "-u", "critical", text])
+    except Exception as ex:
+        eprint(BINARY_NAME + " failed to run:")
+        eprint(ex)
+
+
+def msg_long():
+    """Generates the notification text for a long interval."""
+    text = (("LONG break " * 30) + "\n") * 80
+    return text
+
+
+def msg_short():
+    """Generates the notification text for a short interval."""
+    text = (("SHORT break " * 30) + "\n") * 80
+    return text
+
+
+if __name__ == '__main__':
+    main()

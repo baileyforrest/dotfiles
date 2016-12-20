@@ -13,7 +13,7 @@ export BROWSER=google-chrome
 export HISTTIMEFORMAT="[%F %T %z] "
 
 # FZF options
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS="--tiebreak=length,end"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -26,12 +26,17 @@ PATH="$LOCAL_PREFIX/bin:$PATH"
 LD_LIBRARY_PATH="$LOCAL_PREFIX/lib:$LD_LIBRARY_PATH"
 
 PATH="$PATH:$HOME/.dotfiles/scripts"
-PATH="$PATH:$HOME/.cabal/bin"
 PATH="$PATH:$HOME/depot_tools"
 PATH="$PATH:/usr/local/go/bin"
+PATH="$PATH:$HOME/.cabal/bin"
+PATH="$PATH:$HOME/.cargo/bin"
 
 export PATH="$($HOME/.dotfiles/clean_path $PATH)"
 export LD_LIBRARY_PATH="$($HOME/.dotfiles/clean_path $LD_LIBRARY_PATH)"
+
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+    . $HOME/.nix-profile/etc/profile.d/nix.sh
+fi # added by Nix installer
 
 # Disable x11-ssh-askpass
 unset SSH_ASKPASS

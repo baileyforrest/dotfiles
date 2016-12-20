@@ -12,3 +12,6 @@ setxkbmap -layout us -variant dvp
 
 # Source machine specific config
 [ -f $HOME/.custom_xprofile ] && . $HOME/.custom_xprofile
+
+# Start break daemon
+$HOME/.dotfiles/scripts/breakd &

@@ -16,7 +16,7 @@ autoload -U select-word-style; select-word-style bash
 
 # Prompt
 autoload -U colors zsh/terminfo; colors # Colors and terminfo for prompt
-PROMPT="%{$fg[green]%}%n%  %{$fg_no_bold[red]%}%1~ %{$fg[cyan]%}%# %{$reset_color%}"
+PROMPT="%{$fg_no_bold[red]%}%1~ %{$fg[cyan]%}%# %{$reset_color%}"
 RPROMPT="[%{$fg[magenta]%}%T %{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 # Source common configuration options
