@@ -13,7 +13,7 @@ export BROWSER=google-chrome
 export HISTTIMEFORMAT="[%F %T %z] "
 
 # FZF options
-export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_COMMAND='rg --no-ignore-vcs --files'
 export FZF_DEFAULT_OPTS="--tiebreak=length,end"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
