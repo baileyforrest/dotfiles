@@ -20,7 +20,7 @@ bindsym $mod+Return exec "urxvt -e tmux"
 bindsym $mod+Shift+Return exec "urxvt"
 
 # start browser
-bindcode $mod+31 exec "google-chrome"
+bindcode $mod+31 exec "google-chrome-stable"
 
 # kill focused window
 bindcode $mod+Shift+31 kill

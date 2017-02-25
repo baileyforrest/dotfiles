@@ -5,8 +5,8 @@ ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # History
 HISTFILE=$ZDOTDIR/histfile
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000000
+SAVEHIST=1000000000
 
 bindkey -e # Emacs key binds
 autoload -Uz compinit; compinit # Enable auto completion
@@ -22,4 +22,22 @@ RPROMPT="[%{$fg[magenta]%}%T %{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 # Source common configuration options
 [ -f $XDG_CONFIG_HOME/shell/common ] && source $XDG_CONFIG_HOME/shell/common
 
+# Load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Plugins
+source ~/.zplug/init.zsh
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load

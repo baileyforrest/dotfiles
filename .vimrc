@@ -7,6 +7,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'bling/vim-airline'
+Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
@@ -50,20 +51,28 @@ endif
 
 " Make prompt to create directory if it doesn't exist
 function! CreateDirectoryAskConfirmation(dir)
-    if isdirectory(a:dir) " Directory exists
-        return
-    endif
+  if isdirectory(a:dir) " Directory exists
+    return
+  endif
 
-    " Ask for confirmation to create this directory
-    echohl Question
-    echo "Create directory `" . a:dir . "' [y/N]?"
-    echohl None
+  " Ask for confirmation to create this directory
+  echohl Question
+  echo "Create directory `" . a:dir . "' [y/N]?"
+  echohl None
 
-    let response = nr2char(getchar())
-    " mkdir() and :write if we want to make a directory
-    if response ==? "y"
-        call mkdir(a:dir, "p")
-    endif
+  let response = nr2char(getchar())
+  " mkdir() and :write if we want to make a directory
+  if response ==? "y"
+    call mkdir(a:dir, "p")
+  endif
+endfunction
+
+function ToggleWrap()
+  if (&wrap == 1)
+    set nowrap
+  else
+    set wrap
+  endif
 endfunction
 
 " Disable omnicomplete preview window after choosing an option.
@@ -100,6 +109,7 @@ hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=red ctermbg=NO
 " Keyboard shortcuts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader=" "
+map <F9> :call ToggleWrap()<cr>
 nnoremap <C-c> :bp\|bd # <cr>
 nnoremap <F4> :make!<cr>
 nnoremap ; :
@@ -159,3 +169,19 @@ let g:fzf_layout = { 'down': '~40%' }
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>s :Ag<cr>
+
+" easymotion
+" <Leader>c{char} to move to {char}
+map  <Leader>c <Plug>(easymotion-bd-f)
+nmap <Leader>c <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
