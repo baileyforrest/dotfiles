@@ -84,12 +84,6 @@ autocmd CompleteDone * pclose
 colorscheme molokai
 set t_Co=256 " Enable 256 colors
 
-if exists('+relativenumber')
-    set relativenumber " Show line numbers from cursor
-else
-    set number " Number shows current line number on 0 position if relative enabled
-endif
-
 if exists('+colorcolumn')
     set colorcolumn=+0
     hi ColorColumn ctermbg=235
@@ -171,6 +165,9 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>s :Ag<cr>
 
 " easymotion
+" Dvorak friendly keys
+let g:EasyMotion_keys='zl;savqr,nowj.cmkbxdifygptehu'
+
 " <Leader>c{char} to move to {char}
 map  <Leader>c <Plug>(easymotion-bd-f)
 nmap <Leader>c <Plug>(easymotion-overwin-f)
