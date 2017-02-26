@@ -4,7 +4,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='\[\033[1;31m\]\W $\[\033[0m\] '
+PS1='\[\033[0;32m\]\W \[\033[1;31m\]$\[\033[0m\] '
 
 # Unlimited history size
 HISTSIZE=
@@ -18,6 +18,12 @@ shopt -s histappend # Append to history rather than overwriting.
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# Load bash specific files
+for config in $XDG_CONFIG_HOME/shell/bash/*; do
+    . $config
+done
+unset config
 
 # Enable fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
