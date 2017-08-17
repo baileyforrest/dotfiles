@@ -103,6 +103,11 @@ hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=red ctermbg=NO
 " Keyboard shortcuts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader=" "
+" Window navigation
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 map <F9> :call ToggleWrap()<cr>
 nnoremap <C-c> :bp\|bd # <cr>
 nnoremap <F4> :make!<cr>
