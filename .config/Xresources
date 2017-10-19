@@ -1,9 +1,7 @@
 Xcursor.theme: Vanilla-DMZ-AA
 
 URxvt*saveLines:         0
-URxvt*font: -*-Terminus-medium-*-*-*-18-*-*-*-*-*-*-*, \
-            xft:unifont:style=Medium:antialias=false
-
+URxvt*font: -*-Terminus-medium-*-*-*-18-*-*-*-*-*-*-*
 
 ! terminal colors ------------------------------------------------------------
 ! tangoesque scheme

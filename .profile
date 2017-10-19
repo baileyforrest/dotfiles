@@ -16,7 +16,7 @@ export HISTTIMEFORMAT="[%F %T %z] "
 export TZ=:/etc/localtime
 
 # FZF options
-export FZF_DEFAULT_COMMAND='rg --no-ignore-vcs --files'
+export FZF_DEFAULT_COMMAND='rg --files --color never'
 export FZF_DEFAULT_OPTS="--tiebreak=length,end"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -34,6 +34,12 @@ PATH="$PATH:$HOME/.depot_tools"
 PATH="$PATH:/usr/local/go/bin"
 PATH="$HOME/.cabal/bin:$PATH"
 PATH="$PATH:$HOME/.cargo/bin"
+
+load_nvm() {
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
 
 export PATH
 PATH="$("$HOME/.dotfiles/clean_path" "$PATH")"
