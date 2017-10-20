@@ -7,9 +7,11 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'bling/vim-airline'
+Plug 'bogado/file-line'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'kana/vim-altr'
 Plug 'majutsushi/tagbar'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'rust-lang/rust.vim'
@@ -33,7 +35,6 @@ set cinoptions=l1 " Sane c/c++ switch case indentation
 " Alternative syntax for filetypes
 au BufReadPost *.sig set syntax=sml
 au BufReadPost *.glsl set syntax=c
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -104,13 +105,14 @@ hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=red ctermbg=NO
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader=" "
 " Window navigation
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 map <F9> :call ToggleWrap()<cr>
-nnoremap <C-c> :bp\|bd # <cr>
-nnoremap <F4> :make!<cr>
+nnoremap <C-c> :bp<bar>sp<bar>bn<bar>bd<CR>.
+nmap <F4>  <Plug>(altr-forward)
+nmap <S-F4>  <Plug>(altr-back)
 nnoremap ; :
 nnoremap m :
 nnoremap <leader>md :call CreateDirectoryAskConfirmation(expand("%:p:h"))<cr>
