@@ -30,7 +30,7 @@ LD_LIBRARY_PATH="$LOCAL_PREFIX/lib:$LD_LIBRARY_PATH"
 
 PATH="$PATH:/sbin/"
 PATH="$PATH:$HOME/.dotfiles/scripts"
-PATH="$PATH:$HOME/.depot_tools"
+PATH="$HOME/.depot_tools:$PATH"
 PATH="$PATH:/usr/local/go/bin"
 PATH="$HOME/.cabal/bin:$PATH"
 PATH="$PATH:$HOME/.cargo/bin"

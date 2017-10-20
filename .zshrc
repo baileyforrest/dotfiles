@@ -14,6 +14,9 @@ autoload -Uz compinit; compinit # Enable auto completion
 # Word select similar to bash. e.g. meta-backspace deletes one directory.
 autoload -U select-word-style; select-word-style bash
 
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+
 # Prompt
 autoload -U colors zsh/terminfo; colors # Colors and terminfo for prompt
 PROMPT="%{$fg_no_bold[red]%}%1~ %{$fg[cyan]%}%# %{$reset_color%}"
