@@ -1,6 +1,8 @@
 #!/bin/sh
 # .xprofile
 
+[ -f $HOME/.profile ] && . $HOME/.profile
+
 # Set keyboard layout
 setxkbmap -layout us -variant dvp
 

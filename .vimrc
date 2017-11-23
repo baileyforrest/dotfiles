@@ -7,7 +7,6 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'bling/vim-airline'
-Plug 'bogado/file-line'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
