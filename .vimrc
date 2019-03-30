@@ -18,7 +18,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer --js-completer --rust-completer --java-completer' }
+Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
 
 call plug#end()
