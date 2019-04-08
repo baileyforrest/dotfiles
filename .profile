@@ -12,9 +12,6 @@ export EDITOR=vim
 export BROWSER=google-chrome-stable
 export HISTTIMEFORMAT="[%F %T %z] "
 
-# https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/
-export TZ=:/etc/localtime
-
 # FZF options
 export FZF_DEFAULT_COMMAND='rg --files --color never'
 export FZF_DEFAULT_OPTS="--tiebreak=length,end"
@@ -34,6 +31,12 @@ PATH="$HOME/.depot_tools:$PATH"
 PATH="$PATH:/usr/local/go/bin"
 PATH="$HOME/.cabal/bin:$PATH"
 PATH="$PATH:$HOME/.cargo/bin"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/b/google-cloud-sdk/path.zsh.inc' ]; then source '/home/b/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/b/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/b/google-cloud-sdk/completion.zsh.inc'; fi
 
 load_nvm() {
     export NVM_DIR="$HOME/.nvm"

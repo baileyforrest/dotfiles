@@ -26,7 +26,7 @@ bindcode $mod+31 exec "google-chrome-stable"
 bindcode $mod+Shift+31 kill
 
 # start dmenu (program launcher)
-bindcode $mod+40 exec "dmenu_run"
+bindcode $mod+40 exec "rofi -show run"
 
 # lock screen
 bindcode $mod+33 exec "sys.lock"
