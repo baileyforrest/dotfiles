@@ -25,6 +25,14 @@ RPROMPT="[%{$fg[magenta]%}%T %{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 # Source common configuration options
 [ -f $XDG_CONFIG_HOME/shell/common ] && source $XDG_CONFIG_HOME/shell/common
 
+# Load zsh specific files
+if [ -n "$(ls $XDG_CONFIG_HOME/shell/zsh/ 2>/dev/null)" ]; then
+  for config in $XDG_CONFIG_HOME/shell/zsh/*; do
+      . $config
+  done
+  unset config
+fi
+
 fpath=(~/.zsh $fpath)
 
 # Load fzf

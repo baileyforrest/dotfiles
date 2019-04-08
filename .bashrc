@@ -16,14 +16,16 @@ shopt -s histappend # Append to history rather than overwriting.
 
 # Enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+  . /etc/bash_completion
 fi
 
 # Load bash specific files
-for config in $XDG_CONFIG_HOME/shell/bash/*; do
-    . $config
-done
-unset config
+if [ -n "$(ls $XDG_CONFIG_HOME/shell/bash/ 2>/dev/null)" ]; then
+  for config in $XDG_CONFIG_HOME/shell/bash/*; do
+      . $config
+  done
+  unset config
+fi
 
 # Enable fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

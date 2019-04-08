@@ -11,6 +11,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-altr'
+Plug 'leafgarland/typescript-vim'
 Plug 'majutsushi/tagbar'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'rust-lang/rust.vim'
@@ -43,6 +44,13 @@ set nobackup " No backup files
 set directory=$XDG_DATA_HOME/vim " Vim .swp file location
 set wildmode=longest,list,full " Tab expand up partial matches
 set spelllang=en_us " American English for spell checking
+
+" Persistent undo
+set undofile
+set undodir=$XDG_DATA_HOME/vim/undo
+
+set undolevels=1000
+set undoreload=10000
 
 " Jump to the last position when reopening a file
 if has("autocmd")
@@ -119,6 +127,9 @@ inoremap jj <ESC>
 nnoremap <leader>en <esc>:cn <cr>
 nnoremap <leader>ep <esc>:cp <cr>
 
+" Remove trailing whitespace
+nnoremap <leader>tws <esc>:%s/\s\+$//e <cr>
+
 " Expand %% to file's current path
 cabbr <expr> %% expand('%:p:h')
 
@@ -158,6 +169,7 @@ let g:syntastic_javascript_checkers = ['jshint']
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 nnoremap <leader>jd :YcmCompleter GoTo<cr>
 nnoremap <leader>yd :YcmDiags<cr>
+"let g:ycm_filetype_specific_completion_to_disable = {'cpp': 0}
 
 " FZF options
 let g:fzf_action = {

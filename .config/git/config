@@ -2,6 +2,7 @@
     b = branch
     c = commit
     cm = commit --amend
+    cp = cherry-pick
     ct = checkout
     d = diff
     l = log

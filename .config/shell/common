@@ -12,7 +12,7 @@ done
 unset config
 
 # Set dircolors
-if command -v dircolors; then
+if command -v dircolors > /dev/null; then
   DIRCOLORS=$XDG_CONFIG_HOME/shell/dircolors
   test -r $DIRCOLORS && eval "$(dircolors $DIRCOLORS)"
   unset DIRCOLORS
