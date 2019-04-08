@@ -16,20 +16,20 @@ font "-*-Terminus-medium-*-*-*-12-*-*-*-*-*-*-*"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec "urxvt -e tmux"
-bindsym $mod+Shift+Return exec "urxvt"
+bindsym $mod+Return exec "exec urxvt -e tmux"
+bindsym $mod+Shift+Return exec "exec urxvt"
 
 # start browser
-bindcode $mod+31 exec "google-chrome-stable"
+bindcode $mod+31 exec "exec google-chrome-stable"
 
 # kill focused window
 bindcode $mod+Shift+31 kill
 
 # start dmenu (program launcher)
-bindcode $mod+40 exec "rofi -show run"
+bindcode $mod+40 exec "exec rofi -show run"
 
 # lock screen
-bindcode $mod+33 exec "sys.lock"
+bindcode $mod+33 exec "exec sys.lock"
 
 # take screenshots
 bindcode 107 exec "scrot -e 'mv $f ~/Pictures/screenshots/ 2>/dev/null'"
