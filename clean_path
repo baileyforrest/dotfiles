@@ -1,14 +1,14 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Canonicalizes a $PATH variable. Removes duplicates and relative paths."""
 # Bailey Forrest <baileycforrest@gmail.com>
+
+from __future__ import print_function
 
 import os
 import sys
 
-def printerr(*objs):
-    """Print objs to stderr."""
-
-    print(*objs, file=sys.stderr)
+def printerr(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
 
 
 def main():
