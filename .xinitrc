@@ -15,5 +15,9 @@ fi
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f $HOME/.xprofile ] && . $HOME/.xprofile
 
+if command -v vmware-user-suid-wrapper; then
+  vmware-user-suid-wrapper
+fi
+
 #launch wm
 exec i3

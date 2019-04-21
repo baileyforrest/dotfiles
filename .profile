@@ -32,14 +32,8 @@ PATH="$PATH:/usr/local/go/bin"
 PATH="$HOME/.cabal/bin:$PATH"
 PATH="$PATH:$HOME/.cargo/bin"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/b/google-cloud-sdk/path.zsh.inc' ]; then source '/home/b/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/b/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/b/google-cloud-sdk/completion.zsh.inc'; fi
-
 load_nvm() {
-    export NVM_DIR="$HOME/.nvm"
+    export NVM_DIR="$XDG_CONFIG_HOME"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
