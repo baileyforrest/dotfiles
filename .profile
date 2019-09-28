@@ -19,7 +19,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Find ruby gem path
 if which ruby > /dev/null && which gem > /dev/null; then
-    PATH="$PATH:$(ruby -rubygems -e 'puts Gem.user_dir')/bin"
+    PATH="$PATH:$(ruby -r rubygems -e 'puts Gem.user_dir')/bin"
 fi
 
 PATH="$LOCAL_PREFIX/bin:$PATH"
