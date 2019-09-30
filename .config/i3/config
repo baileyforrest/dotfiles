@@ -147,12 +147,16 @@ bindcode $mod+70 exec $mpc_toggle
 bindcode 172 exec $mpc_toggle
 
 # volume control
-set $volume_down "amixer set Master 1%-"
-set $volume_up "amixer set Master 1%+"
-bindcode $mod+68 exec $volume_down
-bindcode 122 exec $volume_down
-bindcode $mod+69 exec $volume_up
-bindcode 123 exec $volume_up
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -SIGUSR1 i3status
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -SIGUSR1 i3status
+
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && killall -SIGUSR1 i3status
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+
+# Lock screen using i3lock upon suspend
+exec --no-startup-id xss-lock -l -- sys.lock &
 
 # exec start up applications
-exec "pulseaudio --start"
+exec dex -ae i3
