@@ -6,7 +6,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-Plug 'bling/vim-airline'
+Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -19,7 +19,9 @@ Plug 'tomasr/molokai'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'Valloric/YouCompleteMe'
-Plug 'w0rp/ale'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -89,8 +91,10 @@ autocmd CompleteDone * pclose
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme molokai
 set t_Co=256 " Enable 256 colors
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
 
 if exists('+colorcolumn')
     set colorcolumn=+0
@@ -150,6 +154,7 @@ nnoremap <leader>? q?i
 " remove separators
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:airline_theme='solarized'
 
 " Configure gtags
 set cscopetag
@@ -169,7 +174,7 @@ let g:syntastic_javascript_checkers = ['jshint']
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 nnoremap <leader>jd :YcmCompleter GoTo<cr>
 nnoremap <leader>yd :YcmDiags<cr>
-"let g:ycm_filetype_specific_completion_to_disable = {'cpp': 0}
+let g:ycm_filetype_specific_completion_to_disable = {'cpp': 0}
 
 " FZF options
 let g:fzf_action = {
