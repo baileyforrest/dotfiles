@@ -13,7 +13,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-altr'
 Plug 'leafgarland/typescript-vim'
 Plug 'majutsushi/tagbar'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-sensible'
@@ -21,7 +21,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -42,7 +41,8 @@ au BufReadPost *.glsl set syntax=c
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nobackup " No backup files
+set nobackup
+set nowritebackup
 set directory=$XDG_DATA_HOME/vim " Vim .swp file location
 set wildmode=longest,list,full " Tab expand up partial matches
 set spelllang=en_us " American English for spell checking
@@ -53,6 +53,15 @@ set undodir=$XDG_DATA_HOME/vim/undo
 
 set undolevels=1000
 set undoreload=10000
+
+" Recommended by coc.nvim
+set encoding=utf-8
+set hidden
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
 
 " Jump to the last position when reopening a file
 if has("autocmd")
@@ -170,12 +179,6 @@ let g:syntastic_check_on_open=1 "Check syntax of file open
 " JSLint options
 let g:syntastic_javascript_checkers = ['jshint']
 
-" Default ycm conf for scratch files
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-nnoremap <leader>jd :YcmCompleter GoTo<cr>
-nnoremap <leader>yd :YcmDiags<cr>
-let g:ycm_filetype_specific_completion_to_disable = {'cpp': 0}
-
 " FZF options
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -205,3 +208,17 @@ nmap <Leader>l <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" coc.nvim
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
