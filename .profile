@@ -16,6 +16,7 @@ export HISTTIMEFORMAT="[%F %T %z] "
 export FZF_DEFAULT_COMMAND='rg --files --color never'
 export FZF_DEFAULT_OPTS="--tiebreak=length,end"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_TMUX_OPTS="-d 40%"
 
 # Find ruby gem path
 if which ruby > /dev/null && which gem > /dev/null; then
