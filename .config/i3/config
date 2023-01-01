@@ -155,8 +155,6 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && k
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
-for_window [ class="(?i)simics-common" ] floating enable
-
 # Lock screen using i3lock upon suspend
 exec --no-startup-id xss-lock -l -- sys.lock &
 
