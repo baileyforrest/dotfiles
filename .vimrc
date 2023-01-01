@@ -99,10 +99,8 @@ autocmd CompleteDone * pclose
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme molokai
 set t_Co=256 " Enable 256 colors
-let g:solarized_termcolors=256
-set background=light
-colorscheme solarized
 
 if exists('+colorcolumn')
     set colorcolumn=+0
@@ -113,7 +111,7 @@ endif
 
 " Show trailing whitespace and tabs as characters
 set list
-set listchars=trail:·,tab:▸-,extends:>,precedes:<,nbsp:+
+set listchars=trail:·,tab:▸=,extends:>,precedes:<,nbsp:+
 
 " Set up spelling errors to look nicer
 hi SpellBad guisp=red gui=undercurl guifg=NONE guibg=NONE ctermfg=red ctermbg=NONE term=underline cterm=underline
@@ -153,6 +151,7 @@ nnoremap <leader>m q:i
 nnoremap <leader>/ q/i
 nnoremap <leader>? q?i
 
+nmap <F1> :set shiftwidth=2<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin config
@@ -162,7 +161,6 @@ nnoremap <leader>? q?i
 " remove separators
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline_theme='solarized'
 
 " Configure gtags
 set cscopetag
@@ -185,6 +183,8 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_preview_window = []
+
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>s :Ag<cr>
@@ -212,12 +212,17 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction

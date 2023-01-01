@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Canonicalizes a $PATH variable. Removes duplicates and relative paths."""
 # Bailey Forrest <baileycforrest@gmail.com>
 
