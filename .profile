@@ -16,6 +16,7 @@ export HISTTIMEFORMAT="[%F %T %z] "
 export FZF_DEFAULT_COMMAND='rg --files --color never'
 export FZF_DEFAULT_OPTS="--tiebreak=length,end"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_R_COMMAND=""
 export FZF_TMUX_OPTS="-d 40%"
 
 # Find ruby gem path
@@ -32,6 +33,7 @@ PATH="$HOME/.depot_tools:$PATH"
 PATH="$PATH:/usr/local/go/bin"
 PATH="$HOME/.cabal/bin:$PATH"
 PATH="$PATH:$HOME/.cargo/bin"
+PATH="$PATH:$HOME/.local/bin"
 
 load_nvm() {
     export NVM_DIR="$XDG_CONFIG_HOME"
