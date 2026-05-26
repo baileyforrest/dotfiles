@@ -34,6 +34,7 @@ PATH="$PATH:/usr/local/go/bin"
 PATH="$HOME/.cabal/bin:$PATH"
 PATH="$PATH:$HOME/.cargo/bin"
 PATH="$PATH:$HOME/.local/bin"
+PATH="$PATH:$HOME/.bun/bin"
 
 load_nvm() {
     export NVM_DIR="$XDG_CONFIG_HOME"
